@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="{{ STATIC_URL }}js/jquery-1.8.3.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui-1.9.2.custom.js"></script>
+<script src="{{ STATIC_URL }}js/jsPlumb-1.7.5-min.js"></script>
+
+
+<link href="{{ STATIC_URL }}css/common.css" type="text/css" rel="stylesheet"/>
+<link href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.9.2.custom.css" type="text/css" rel="stylesheet"/>
+<script src="{{ STATIC_URL }}js/view.js"></script>
+
+</head>
+<body>
+{% csrf_token %}
+    <div class="map" id="map">
+        <div class="wrapper">
+            <div id="menu" class="">
+                <div class="static_block">
+                    <div class="ep"></div>
+                    Host
+                </div>
+                <div class="static_block_switch">
+                    <div class="ep"></div>
+                    Switch
+                </div>
+                <div class="static_button">
+                    <button onclick="create_script()" al>Create script</button>
+                </div>
+            </div>
+            <div id="trash" class=""></div>
+        </div>
+        <div id="dialog-node" title="Parameters">
+            <form>
+                <fieldset>
+                    <br>name:<br>
+                    <input type="text" name="name" id="name" class="text" maxlength="10" required/>
+                    <br>mac:<br>
+                    <input type="text" name="mac" id="mac" class="text" maxlength="17"/>
+                    <br>ip:<br>
+                    <input type="ip" name="ip" id="ip" class="text" maxlength="17"/>
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px"/>
+                </fieldset>
+            </form>
+        </div>
+        <div id="dialog-connection" title="Parameters">
+            <form>
+                <fieldset>
+                    <br>name:<br>
+                    <input type="text" name="name" id="con_name" class="text" maxlength="30" required/>
+                    <br>loss:<br>
+                    <input type="text" name="con_name" id="con_loss" class="text" maxlength="3" value=0 required/>
+                    <br>queue:<br>
+                    <input type="text" name="queue" id="queue" class="text" maxlength="3" value=10 required/>
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

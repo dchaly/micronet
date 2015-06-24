@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+{% csrf_token %}
+<br>from mininet.topo import Topo
+<br>DATA={{ topo }}
+<br>METHODS={{ methods }}
+<br>ORDER={{ order }}
+<br>class GenerateTopo(Topo):
+<br>&nbsp;&nbsp;def build(self):
+<br>&nbsp;&nbsp;&nbsp;&nbsp;for type in ORDER:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method = getattr(self, METHODS[type])
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for args, kwargs in DATA[type].items():
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method(*args, **kwargs)
+<br>
+<br>
+<br>def configure(net, items, node):
+<br>&nbsp;&nbsp;for item in items:
+<br>&nbsp;&nbsp;&nbsp;item.config(DATA[node][(item.name,)])
+</body>
+</html>
